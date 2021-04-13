@@ -22,5 +22,6 @@ int main(){
     cout << "Cantidad de 0: " << cont0 << endl;
     cout << "Promedio positivos: " << promPos << endl;
     cout << "Sumatoria negativos: " << sumNeg << endl;
+    return 0;
 }
 */
