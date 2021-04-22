@@ -1,4 +1,4 @@
-#include <iostream>
+/*#include <iostream>
 using namespace std;
 
 int main(){
@@ -41,4 +41,4 @@ int main(){
     cout<< "Boletos dobles: "<<res4<<endl;
 
     return 0;
-} 
+} */
