@@ -2,8 +2,8 @@
 using namespace std;
 
 int main(){
-    unsigned int prom=1,max1=0,max2=0,leg,legMax1=0,legMax2=0;
-
+    unsigned int leg,legMax1=0,legMax2=0;
+    double prom=1,max1=0,max2=0;
     while(leg!=0){
         cout<<"Ingresa legajo: ";
         cin>>leg;
