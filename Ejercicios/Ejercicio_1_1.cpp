@@ -10,12 +10,14 @@ int main(){
         if (num == 0) {
             cont0++;
         }
-        if (num > 0) {
-            sumPos += num;
-            contPos++;
-        }
-        if (num < 0) {
-            sumNeg += num;
+        else{
+            if (num > 0) {
+                sumPos += num;
+                contPos++;
+            }
+            else{
+                sumNeg += num;
+            }
         }
     }
     promPos = sumPos / (double)contPos;
