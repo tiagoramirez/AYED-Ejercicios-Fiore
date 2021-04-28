@@ -1,4 +1,4 @@
-/*#include <iostream>
+#include <iostream>
 using namespace std;
 
 int main(){
@@ -67,4 +67,4 @@ int main(){
     cout<<"Termino el programa.";
     
     return 0;
-}*/
+}

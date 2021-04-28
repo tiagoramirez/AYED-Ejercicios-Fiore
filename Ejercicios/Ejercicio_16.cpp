@@ -1,4 +1,4 @@
-/*#include <iostream>
+#include <iostream>
 using namespace std;
 
 int main(){
@@ -28,4 +28,4 @@ int main(){
     cout<<"El alumno maximo es: "<<legMax1<<endl;
     cout<<"El segundo alumno maximo es: "<<legMax2<<endl;
     return 0;
-}*/
+}

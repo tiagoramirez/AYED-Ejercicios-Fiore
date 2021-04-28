@@ -5,15 +5,7 @@ Estos ejercicios resueltos son para que se den una idea por si se quedan trabado
 
 La guía de ejercicios es la que se llama "Ejercicios.pdf".
 
-Mis ejercicios resueltos están en la carpeta "Ejercicios".
-
-Están comentados para ahorrar problemas con múltiples main (en algunos IDE da problema tener varios main).
-
-Para poder ver mejor los ejercicios, copienlos y pegenlos borrando:
-
-/*    <---al principio
-
-*/    <---al final
+Mis ejercicios resueltos están en la carpeta "Ejercicios" junto con los ejercicios que dió en clase.
 
 Cualquier cosa tienen mi Instagram en mi perfil de GitHub para preguntarme cualquier duda sobre algún ejercicio y los ayudo dentro de lo que puedo :D
 

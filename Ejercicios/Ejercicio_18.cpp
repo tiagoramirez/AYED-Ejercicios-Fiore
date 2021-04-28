@@ -1,4 +1,4 @@
-/*#include <iostream>
+#include <iostream>
 using namespace std;
 
 //Quice usar funciones porque en toda la guia no lo habia utilizado y en 2 ejercicios pasamos a archivos
@@ -46,4 +46,4 @@ int main(){
         }
     }
     return 0;
-}*/
+}

@@ -1,4 +1,4 @@
-/*#include <iostream>
+#include <iostream>
 using namespace std;
 
 int main(){ //Lo voy a encarar desde 1/1/1922-1/1/2021 (otras fechas pueden tener bugs, la consigna no era clara tampoco)
@@ -75,4 +75,4 @@ int main(){ //Lo voy a encarar desde 1/1/1922-1/1/2021 (otras fechas pueden tene
     cout<<"Nacimientos de mujeres en la primavera de 1942: "<<res3<<endl;
     cout<<"Sexo de la persona mas vieja: "<<sexoMax<<endl;
     return 0;
-}*/
+}

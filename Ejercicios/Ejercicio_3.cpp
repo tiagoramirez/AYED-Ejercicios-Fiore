@@ -1,4 +1,4 @@
-/*#include <iostream>
+#include <iostream>
 using namespace std;
 
 int main(){
@@ -13,4 +13,4 @@ int main(){
     }
     cout <<"Hay "<<conMult<<" multiplo\\s de "<< m<<" entre 1 y "<<n<<endl;
     return 0;
-}*/
+}

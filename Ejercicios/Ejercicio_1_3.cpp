@@ -1,4 +1,4 @@
-/*#include <iostream>
+#include <iostream>
 using namespace std;
 
 int main(){
@@ -27,4 +27,4 @@ int main(){
     cout << "Promedio positivos: " << promPos << endl;
     cout << "Sumatoria negativos: " << sumNeg << endl;
     return 0;
-}*/
+}

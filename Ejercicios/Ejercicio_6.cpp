@@ -1,4 +1,4 @@
-/*#include <iostream>
+#include <iostream>
 using namespace std;
 
 int main(){
@@ -26,4 +26,4 @@ int main(){
     cout<<"Empleados que ganan igual o mas de 780 y menos de 999:"<<res3<<endl;
     cout<<"Empleados que ganan mas de 999: "<<res4<<endl;
     return 0;
-}*/
+}

@@ -1,4 +1,4 @@
-/*#include <iostream>
+#include <iostream>
 using namespace std;
 
 int main(){
@@ -41,4 +41,4 @@ int main(){
     cout<<"Total de sublotes: "<<cantSublote<<endl;
     cout<<"El valor maximo "<<max<<" estaba en el sublote "<<maxSublote<<" en la posicion "<<posMax<<" (empezando por la posicion 0)."<<endl;
     return 0;
-}*/
+}

@@ -1,4 +1,4 @@
-/*#include <iostream>
+#include <iostream>
 using namespace std;
 
 int main(){
@@ -19,4 +19,4 @@ int main(){
     cout <<"El valor maximo es "<< max<< " y estaba en la posicion "<<posMax;
 
     return 0;
-} */
+}
