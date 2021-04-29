@@ -14,11 +14,10 @@ int main(){
     c2=circunferenciaCreate();
     cout<<"Ingresa un punto..."<<endl;
     p=puntoCreate();
+    
     while(p.x!=0.0 or p.y!=0.0){
         if(circunferenciaContienePunto(c1,p) and circunferenciaContienePunto(c2,p)){
             rtaC++;
-            rtaA++;
-            rtaB++;
         }
         else{
             if(circunferenciaContienePunto(c1,p)){
@@ -38,10 +37,10 @@ int main(){
         p=puntoCreate();
     }
 
-    cout<<"Puntos dentro de la circunferencia 1: "<<rtaA<<endl;
-    cout<<"Puntos dentro de la circunferencia 2: "<<rtaB<<endl;
+    cout<<"Puntos dentro solamente de la circunferencia 1: "<<rtaA<<endl;
+    cout<<"Puntos dentro solamente de la circunferencia 2: "<<rtaB<<endl;
     cout<<"Puntos dentro de las 2 circunferencias: "<<rtaC<<endl;
-    cout<<"Puntos fuera de las 2 circunferencias: "<<rtaC<<endl;
+    cout<<"Puntos fuera de las 2 circunferencias: "<<rtaD<<endl;
     
     return 0;
 }
