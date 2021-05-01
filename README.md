@@ -12,6 +12,9 @@ Cualquier cosa tienen mi Instagram en mi perfil de GitHub para preguntarme cualq
 Saludos y éxitos.
 
 PD:
+
 -Ejercicio 7 solo hecho con structs y funciones.
--Ejercicio 17 tiene un error. Los años se tienen que ingresar con 4 digitos en vez de 2.
+
+-Ejercicio 17 tiene un error en la guía. Los años se tienen que ingresar con 4 digitos en vez de 2.
+
 -Ejercicio 19 no lo hice porque no aporta absolutamente nada.
