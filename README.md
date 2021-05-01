@@ -10,3 +10,8 @@ Mis ejercicios resueltos están en la carpeta "Ejercicios" junto con los ejercic
 Cualquier cosa tienen mi Instagram en mi perfil de GitHub para preguntarme cualquier duda sobre algún ejercicio y los ayudo dentro de lo que puedo :D
 
 Saludos y éxitos.
+
+PD:
+-Ejercicio 7 solo hecho con structs y funciones.
+-Ejercicio 17 tiene un error. Los años se tienen que ingresar con 4 digitos en vez de 2.
+-Ejercicio 19 no lo hice porque no aporta absolutamente nada.
