@@ -16,3 +16,7 @@ int multiplicarValores(int a, int b){
     }
     return ret;
 }
+
+void mostrarResultado(int num1,int num2){
+    cout<<num1<<" * "<<num2<<" = "<<multiplicarValores(num1,num2);
+}

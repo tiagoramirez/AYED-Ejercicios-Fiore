@@ -44,3 +44,17 @@ bool esTrianguloNulo(Triangulo t){
         return false;
     }
 }
+
+void calcularTriangulo(Triangulo t){
+    if (cantLadosIguales(t)==3){
+        cout<<"Es un triangulo equilatero."<<endl;
+    }
+    else{
+        if(cantLadosIguales(t)==2){
+            cout<<"Es un triangulo isosceles."<<endl;
+        }
+        else{
+            cout<<"Es un triangulo escaleno"<<endl;
+        }
+    }
+}
