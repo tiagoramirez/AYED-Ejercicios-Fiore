@@ -22,8 +22,14 @@ int main(){
         cout << "Ingrese otro numero: ";
         cin >> num;
     }
-    promPos = sumPos / (double)contPos;
-    cout << "Cantidad de 0: " << cont0 << endl;
+    
+    if (contPos==0){
+        cout<<"No se ingresaron valores positivos.";
+    }
+    else{
+        promPos = sumPos / (double)contPos;
+        cout << "Cantidad de 0: " << cont0 << endl;
+    }
     cout << "Promedio positivos: " << promPos << endl;
     cout << "Sumatoria negativos: " << sumNeg << endl;
     return 0;
