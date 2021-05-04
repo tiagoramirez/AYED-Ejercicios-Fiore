@@ -45,16 +45,22 @@ bool esTrianguloNulo(Triangulo t){
     }
 }
 
-void calcularTriangulo(Triangulo t){
+void calcularTriangulo(Triangulo t,int &canEqu, int &cantIso, int &cantEsc){
     if (cantLadosIguales(t)==3){
-        cout<<"Es un triangulo equilatero."<<endl;
+        canEqu++;
     }
     else{
         if(cantLadosIguales(t)==2){
-            cout<<"Es un triangulo isosceles."<<endl;
+            cantIso++;
         }
         else{
-            cout<<"Es un triangulo escaleno"<<endl;
+            cantEsc++;
         }
     }
+}
+
+void mostrarResultados(int &cantEqu, int &cantIso, int &cantEsc){
+    cout<<"Cantidad de triangulos equilateros: "<<cantEqu<<endl;
+    cout<<"Cantidad de triangulos isosceles: "<<cantIso<<endl;
+    cout<<"Cantidad de triangulos escalenos: "<<cantEsc<<endl;
 }
