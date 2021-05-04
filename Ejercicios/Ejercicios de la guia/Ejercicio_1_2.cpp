@@ -22,7 +22,7 @@ int main(){
     }
     
     if (contPos==0){
-        cout<<"No se ingresaron valores positivos.";
+        cout<<"No se ingresaron valores positivos."<<endl;
     }
     else{
         promPos = sumPos / (double)contPos;
