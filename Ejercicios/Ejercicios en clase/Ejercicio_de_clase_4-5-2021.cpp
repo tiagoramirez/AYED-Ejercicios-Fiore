@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-//El usuario ingresa numeros y finaliza ingresando el 999.
+//El usuario ingresa numeros y finaliza ingresando el 9999.
 //Mostrar cantidad de 0, promedio de positivos y suma de negativos.
 
 int main(){
@@ -11,7 +11,7 @@ int main(){
     cout<<"Ingresa un numero: ";
     cin>>num;
 
-    while (num!=999){
+    while (num!=9999){
         if (num == 0) {
             cont0++;
         }
