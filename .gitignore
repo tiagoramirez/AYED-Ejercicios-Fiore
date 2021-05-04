@@ -1,10 +1,4 @@
-Debug
-.vs
 AYED FIORE.code-workspace
 .vscode
-main.exe
-AYED-Ejercicios-Fiore.sln
-AYED-Ejercicios-Fiore.vcxproj
-AYED-Ejercicios-Fiore.vcxproj.filters
-AYED-Ejercicios-Fiore.vcxproj.user
 main.cpp
+**.exe
