@@ -3,8 +3,8 @@
 using namespace std;
 
 int main(){
-    unsigned int dia,mes,anio,res1=0,res2=0,res3=0,diaMax,mesMax,anioMax;
-    char sexo,sexoMax;
+    unsigned int dia,mes,anio,res1=0,res2=0,res3=0,diaMax=0,mesMax=0,anioMax=0;
+    char sexo,sexoMax='N';
     cout<<"Ingresa dia de nacimiento: ";
     cin>>dia;
 

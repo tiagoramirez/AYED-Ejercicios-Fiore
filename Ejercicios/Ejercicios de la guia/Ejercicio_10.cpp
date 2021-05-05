@@ -2,7 +2,7 @@
 using namespace std;
 
 int main(){
-    int num, max=-1, pos=0,posMax=-1;
+    int num, max=-1, pos=1,posMax=-1;
     cout << "Ingrese un numero: ";
     cin >> num;
 

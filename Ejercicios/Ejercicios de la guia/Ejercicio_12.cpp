@@ -2,9 +2,10 @@
 using namespace std;
 
 int main(){
-    unsigned int numeroEquipo,cantEquipos,cantPartidos,contEquipAct=1,minPuntos=3200000,contMin=0;//Declaro las variables
+    unsigned int numeroEquipo,cantEquipos,cantPartidos,contEquipAct=1,minPuntos,contMin=0;//Declaro las variables
     unsigned int puntosEquipo=0,contPartAct=1;//Pongo las variables que se que las tengo que reiniciar (es algo que se me ocurrio hacer con el tiempo)
     char res;
+    bool esPrimerEqu=true;
     int minEquipo=-1;
     cout << "Ingresa la cantidad de equipos que hay en el torneo: ";
     cin >> cantEquipos;
@@ -29,9 +30,10 @@ int main(){
             contPartAct++;
         }
 
-        if (puntosEquipo<minPuntos){
+        if (esPrimerEqu==true or puntosEquipo<minPuntos){
             minEquipo=numeroEquipo;
             minPuntos=puntosEquipo;
+            esPrimerEqu=false;
             contMin=1;
         }
         else{

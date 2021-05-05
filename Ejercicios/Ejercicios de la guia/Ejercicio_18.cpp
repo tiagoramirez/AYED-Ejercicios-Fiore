@@ -22,7 +22,7 @@ int main(){
     cout<<"Rectangulo de 12x40: "<<endl;
     for(int alto=0;alto!=12;alto++){
         if(alto==0 or alto==12-1){
-            mostrar=multiplicarString(charToString('-'),40);
+            mostrar=multiplicarString(charToString('*'),40);
             cout<<mostrar<<endl;
         }
         else{
@@ -37,7 +37,7 @@ int main(){
     cin>>ancho;
     for(int i=0;i!=alto;i++){
         if(i==0 or i==alto-1){
-            mostrar=multiplicarString(charToString('-'),ancho);
+            mostrar=multiplicarString(charToString('*'),ancho);
             cout<<mostrar<<endl;
         }
         else{

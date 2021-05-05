@@ -106,14 +106,6 @@ int main(){
         if(tipoPago7<min){
             min=tipoPago7;
         }
-        cout<<"tipopago1: "<<tipoPago1<<endl;
-        cout<<"tipopago2: "<<tipoPago2<<endl;
-        cout<<"tipopago3: "<<tipoPago3<<endl;
-        cout<<"tipopago4: "<<tipoPago4<<endl;
-        cout<<"tipopago5: "<<tipoPago5<<endl;
-        cout<<"tipopago6: "<<tipoPago6<<endl;
-        cout<<"tipopago7: "<<tipoPago7<<endl;
-        cout<<"min: "<<min<<endl;
         //------------Despues de ver cual es el minimo---------
         cant100=0,cant50=0,cant20=0,cant10=0,cant5=0,cant2=0,cant1=0;
         sueldoAux=sueldo;
@@ -204,6 +196,5 @@ int main(){
         cin >> sueldo;
         sueldoAux=sueldo;
     }
-
     return 0;
 }
