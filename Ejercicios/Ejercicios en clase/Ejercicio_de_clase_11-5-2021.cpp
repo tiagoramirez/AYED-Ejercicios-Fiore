@@ -16,7 +16,6 @@ int main(){
     cout<<"Ingresa un valor: ";
     cin >>valor;
 
-
     while(valor!=0){
         if(valor==max){
             contRepeticiones++;
@@ -32,8 +31,13 @@ int main(){
         cin >>valor;
     }
 
-    cout<<"Maximo: "<<max<<endl;
-    cout<<"Repeticiones: "<<contRepeticiones<<endl;
-
+    if(esPrimerValor==false){
+        cout<<"Maximo: "<<max<<endl;
+        cout<<"Repeticiones: "<<contRepeticiones<<endl;
+    }
+    else{
+        cout<<"No se ingresaron valores distintos de 0."<<endl;
+    }
+    
     return 0;
 }
