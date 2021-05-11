@@ -23,13 +23,13 @@ Alumno alumnoCreate(){
         ret.prom=0;
     }
     else{
-        cout<<"Ingresa el promedio: ";
+        cout<<"Ingresa el promedio del legajo "<<ret.leg<<": ";
         cin>>ret.prom;
     }    
     return ret;
 }
 
-void calcularAlumnosMax(Alumno a,double &max1,double &max2,unsigned int &legMax1, unsigned int &legMax2){
+void calcularAlumnosMax(Alumno a,double &max1,double &max2,int &legMax1,int &legMax2){
     if(a.prom>max1){
         max2=max1;
         legMax2=legMax1;
@@ -45,7 +45,18 @@ void calcularAlumnosMax(Alumno a,double &max1,double &max2,unsigned int &legMax1
     }
 }
 
-void mostrarResultados(unsigned int legMax1, unsigned int legMax2){
-    cout<<"El alumno maximo es: "<<legMax1<<endl;
-    cout<<"El segundo alumno maximo es: "<<legMax2<<endl;
+void mostrarResultados(int max1, int max2,int legMax1, int legMax2){
+    if(max1==-1){
+        cout<<"No se ingresaron legajos distintos de 0.";
+    }
+    else{
+        if(max2==-1){
+            cout<<"El unico alumno maximo es: "<<legMax1<<endl;
+        }
+        else{
+            cout<<"El alumno maximo es: "<<legMax1<<endl;
+            cout<<"El segundo alumno maximo es: "<<legMax2<<endl;
+
+        }
+    }
 }

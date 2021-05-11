@@ -3,8 +3,8 @@
 using namespace std;
 
 int main(){
-    unsigned int legMax1=0,legMax2=0;
-    double max1=0,max2=0;
+    int legMax1=-1,legMax2=-1;
+    double max1=-1,max2=-1;
     
     Alumno a;
     a=alumnoCreate();
@@ -12,6 +12,6 @@ int main(){
         calcularAlumnosMax(a,max1,max2,legMax1,legMax2);
         a=alumnoCreate();
     }
-    mostrarResultados(legMax1,legMax2);
+    mostrarResultados(max1,max2,legMax1,legMax2);
     return 0;
 }

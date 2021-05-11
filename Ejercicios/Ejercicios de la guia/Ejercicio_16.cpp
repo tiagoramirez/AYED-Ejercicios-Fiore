@@ -2,8 +2,8 @@
 using namespace std;
 
 int main(){
-    unsigned int leg,legMax1=0,legMax2=0;
-    double prom=1,max1=0,max2=0;
+    int leg,legMax1=-1,legMax2=-1;
+    double prom=1,max1=-1,max2=-1;
     while(leg!=0){
         cout<<"Ingresa legajo: ";
         cin>>leg;
@@ -25,7 +25,20 @@ int main(){
             }
         }
     }
-    cout<<"El alumno maximo es: "<<legMax1<<endl;
-    cout<<"El segundo alumno maximo es: "<<legMax2<<endl;
+    
+    if(max1==-1){
+        cout<<"No se ingresaron legajos distintos de 0.";
+    }
+    else{
+        if(max2==-1){
+            cout<<"El unico alumno maximo es: "<<legMax1<<endl;
+        }
+        else{
+            cout<<"El alumno maximo es: "<<legMax1<<endl;
+            cout<<"El segundo alumno maximo es: "<<legMax2<<endl;
+
+        }
+    }
+
     return 0;
 }
