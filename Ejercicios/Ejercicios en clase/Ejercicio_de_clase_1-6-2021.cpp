@@ -15,6 +15,16 @@ int factorial(int num){
     }
 }
 
+int factorial2(int num){//forma recursiva de hacer el factorial
+    int ret;
+    if(num==0){
+        return 1;
+    }
+    else{
+        ret=num*factorial2(num-1);
+    }
+}
+
 int main(){
     int num,fact;
 
