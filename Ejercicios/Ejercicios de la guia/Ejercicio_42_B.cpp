@@ -36,8 +36,6 @@ int main(){
         }
     }
 
-    cout <<"len: "<<len<<endl;
-
     cout<<"Valor maximo: "<<max<<endl;
     if(len==1){
         cout<<"Posicion: "<<posMax[0]<<endl;
