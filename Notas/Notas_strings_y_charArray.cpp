@@ -14,7 +14,7 @@ int main(){
     
     //String copy: strcpy(array,string.c_str())
 
-    strcpy(i.codMateria,codigoMateria.c_str());
+    strcpy(i.codMateria,codigoMateria.c_str());//o strcpy(i.codMateria,"AB123C");
     strcpy(i.nombreYApelllido,nombreYApellidosss.c_str());
     cout<<"------"<<endl;
     cout<<i.codMateria<<endl;
