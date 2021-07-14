@@ -26,3 +26,26 @@ int buscar(T arr[], int len, K v, int (*cmpTK)(T,K)){
     }
     return pos;
 }
+
+//Elimina el valor ubicado en la posición pos del array arr, decrementando su longitud len.
+template <typename T>
+void eliminar(T arr[], int& len, int pos){
+    for (int i=pos; i<len-1;i++){//Le puse len-1 porque termina 1 posicion antes
+        arr[i]=arr[i+1];
+    }
+    len--;
+}
+
+template <typename T>
+void ordenar(T arr[], int len, int (*cmpTK)(T,T)){
+    T aux;
+    for (int i=0;i<len-1;i++){
+        for(int x=0;x<len-1;x++){
+            if(cmpTK(arr[x],arr[x+1])==1){//veo si el primero es mas grande que el segundo
+                aux=arr[x];
+                arr[x]=arr[x+1];
+                arr[x+1]=aux;
+            }
+        }
+    }
+}
