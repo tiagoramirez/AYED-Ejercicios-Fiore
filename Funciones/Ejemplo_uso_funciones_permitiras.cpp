@@ -65,14 +65,16 @@ int main(){
     agregar<int>(numeros,len,123);
     agregar<int>(numeros,len,12);
     //Elimino el 23 pasandole su posicion
-    eliminar(numeros,len,2);
+    eliminar<int>(numeros,len,1);
     //Elimino el 645 usando el buscar
     int pos=buscar<int,int>(numeros,len,645,cmpIntInt);    
     if(pos!=-1){//distinto de -1 significa que lo encuentra, sino no borra nada
-        eliminar(numeros,len,pos);
+        eliminar<int>(numeros,len,pos);
     }
     //Ordeno el vector
-    ordenar<int>(numeros,len,cmpIntInt);
+    ordenar2<int>(numeros,len,cmpIntInt);
+    //Agrego de forma ordenada
+    insertarOrdenado<int>(numeros,len,131,cmpIntInt);
     //muestro valores del vector
     for(int i = 0; i<len;i++){
         cout<<numeros[i]<<endl;
@@ -112,14 +114,18 @@ int main(){
     strcpy(persona.nombre,"Sofia");
     agregar<Persona>(personas,lenP,persona);
     //Elimino a jose pasandole su posicion
-    eliminar(personas,lenP,1);
-    //Elimino a Roman buscandolo
+    eliminar<Persona>(personas,lenP,1);
+    //Elimino a Roman buscandolo por su dni
     pos=buscar<Persona,int>(personas,lenP,91011,cmpPersonaInt);
     if(pos!=-1){
-        eliminar(personas,lenP,pos);
+        eliminar<Persona>(personas,lenP,pos);
     }
     //Ordeno el vector
-    ordenar<Persona>(personas,lenP,cmpPersonaPersona);
+    ordenar2<Persona>(personas,lenP,cmpPersonaPersona);
+    //Agrego de forma ordenada
+    persona.dni=3556;
+    strcpy(persona.nombre,"Camila");
+    insertarOrdenado<Persona>(personas,lenP,persona,cmpPersonaPersona);
     //muestro valores del vector
     for(int i = 0; i<lenP;i++){
         cout<<"Nombre: "<<personas[i].nombre<<endl;
@@ -133,6 +139,5 @@ int main(){
     else{
         cout<<"No se encontro el dni 4949"<<endl;
     }
-
     return 0;
 }

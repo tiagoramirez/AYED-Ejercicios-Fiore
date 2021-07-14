@@ -37,15 +37,47 @@ void eliminar(T arr[], int& len, int pos){
 }
 
 template <typename T>
-void ordenar(T arr[], int len, int (*cmpTK)(T,T)){
+void ordenar(T arr[], int len, int (*cmpTT)(T,T)){
     T aux;
     for (int i=0;i<len-1;i++){
         for(int x=0;x<len-1;x++){
-            if(cmpTK(arr[x],arr[x+1])==1){//veo si el primero es mas grande que el segundo
+            if(cmpTT(arr[x],arr[x+1])==1){//veo si el primero es mas grande que el segundo
                 aux=arr[x];
                 arr[x]=arr[x+1];
                 arr[x+1]=aux;
             }
         }
     }
+}
+
+template <typename T>
+void ordenar2(T arr[], int len, int (*cmpTT)(T,T)){//ordenar optimizado
+    T aux;
+    bool hayCambio=true;
+    int i=0;
+    while(hayCambio and i<len-1){
+        hayCambio=false;
+        for(int x=0;x<len-1-i;x++){
+            if(cmpTT(arr[x],arr[x+1])==1){//veo si el primero es mas grande que el segundo
+                aux=arr[x];
+                arr[x]=arr[x+1];
+                arr[x+1]=aux;
+                hayCambio=true;
+            }
+        }
+        i++;
+    }
+}
+
+//Inserta v en un array que esta previamente ordenado y retorna la posicion donde se agrega
+template <typename T>
+int insertarOrdenado(T arr[], int& len, T v, int (*cmpTT)(T,T)){
+    int i=len;
+    while(i>0 and cmpTT(v,arr[i-1])==-1){
+        arr[i]=arr[i-1];
+        i--;
+    }
+    arr[i]=v;
+    len++;
+    return i;
 }
