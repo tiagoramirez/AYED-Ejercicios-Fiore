@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stdio.h>
+#include <string.h>
 using namespace std;
 
 struct Alumno{
@@ -200,6 +201,35 @@ int main(){
                 }
 
                 fclose(f);
+
+                ordenar(alumnos,lenAlumnos,cmpAlAl2);
+
+                string codigoMateria[200];
+                int cantInscriptos[200];
+                int posCodigoMateria=-1;
+                string anterior=alumnos[0].codigoMateria;
+                for(int i=0;i<lenAlumnos;i++){
+                    if(i==0 or anterior!=alumnos[i].codigoMateria){
+                        posCodigoMateria++;
+                        cantInscriptos[posCodigoMateria]=1;
+                        codigoMateria[posCodigoMateria]=alumnos[i].codigoMateria;
+                        anterior=alumnos[i].codigoMateria;
+                    }
+                    else{
+                        cantInscriptos[posCodigoMateria]++;
+                    }
+                }
+                for(int i=0;i<posCodigoMateria+1;i++){
+                    cout<<"Materia: "<<codigoMateria[i]<<endl;
+                    cout<<"Cantidad de inscripciones: "<<cantInscriptos[i]<<endl;
+                }
+
+                system("pause");
+            }
+            break;
+
+            case 4:{
+                
             }
             break;
 
