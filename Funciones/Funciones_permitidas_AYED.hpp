@@ -81,3 +81,51 @@ int insertarOrdenado(T arr[], int& len, T v, int (*cmpTT)(T,T)){
     len++;
     return i;
 }
+
+template<typename T, typename K>
+int busquedaBinaria(T a[], int len, K v, int (*cmpTK)(T, K), bool& enc){
+    int ret=-1;
+    enc=false;
+    int ini=0;
+    int fin=len-1;
+    while(!enc and ini<=fin){
+        int medio=(ini+fin)/2;    
+        if(cmpTK(a[medio],v)==0){
+            ret=medio;
+            enc=true;
+        }else{
+            if(cmpTK(a[medio],v)==1){
+                fin=medio-1;
+            }
+            else{
+                ini=medio+1;
+            }
+        }
+    }
+
+    return ret;
+}
+
+template <typename T,typename K>
+int buscaEInsertaOrdenado(T arr[],int& len,T v,bool& enc,int (*cmpTT)(T,T)){
+    int pos=busquedaBinaria(arr,len,v,cmpTT,enc);
+    if(pos==-1){
+        pos=insertarOrdenado(arr,len,v,cmpTT);
+    }
+    return pos;
+}
+
+//agrega al final. No esta en la guia, lo hizo el profesor.
+template <typename T,typename K>
+int buscaYAgrega(T arr[],int& len,T v,bool& enc,int (*cmpTT)(T,T)){
+    int pos=buscar(arr,len,v,cmpTT);
+    if(pos==-1){
+        agregar(arr,len,v);
+        pos=len-1;
+        enc=false;
+    }
+    else{
+        enc=true;
+    }
+    return pos;
+}

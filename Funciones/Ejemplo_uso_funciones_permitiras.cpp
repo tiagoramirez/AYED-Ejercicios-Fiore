@@ -87,7 +87,17 @@ int main(){
     else{
         cout<<"No se encontro el numero 143"<<endl;
     }
-    
+    //buscar binario
+    bool enc;
+    pos=busquedaBinaria<int,int>(numeros,len,150,cmpIntInt,enc);
+    if(enc){
+        cout<<"150 esta en la posicion: "<<pos<<endl;
+    }
+    else{
+        cout<<"No se encontro el numero 150"<<endl;
+    }
+
+
     //----------Ejemplo de uso de funciones permitidas con tipo de dato Persona----------
     Persona personas[10];
     int lenP;
@@ -138,6 +148,14 @@ int main(){
     }
     else{
         cout<<"No se encontro el dni 4949"<<endl;
+    }
+    //buscar binario
+    pos=busquedaBinaria<Persona,int>(personas,lenP,461325,cmpPersonaInt,enc);
+    if(enc){
+        cout<<"DNI 461325 esta en la posicion: "<<pos<<endl;
+    }
+    else{
+        cout<<"No se encontro el dni 461325"<<endl;
     }
     return 0;
 }
