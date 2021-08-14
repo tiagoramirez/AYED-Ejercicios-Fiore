@@ -96,7 +96,28 @@ int main(){
     else{
         cout<<"No se encontro el numero 150"<<endl;
     }
-
+    //Busca e inserta ordenado
+    enc=false;
+    pos=buscaEInsertaOrdenado(numeros,len,333,enc,cmpIntInt);
+    if(!enc){
+        cout<<"Se agrego el numero 333 en la posicion: "<<pos<<endl;
+    }
+    else{
+        cout<<"El numero 333 estaba en la posicion: "<<pos<<endl;
+    }
+    //Busca y agrega desordenado
+    enc=false;
+    pos=buscaYAgrega(numeros,len,111,enc,cmpIntInt);
+    if(!enc){
+        cout<<"Se agrego el numero 111 en la posicion: "<<pos<<endl;
+    }
+    else{
+        cout<<"El numero 111 estaba en la posicion: "<<pos<<endl;
+    }
+    //muestro valores del vector
+    for(int i = 0; i<len;i++){
+        cout<<numeros[i]<<endl;
+    }
 
     //----------Ejemplo de uso de funciones permitidas con tipo de dato Persona----------
     Persona personas[10];
@@ -156,6 +177,34 @@ int main(){
     }
     else{
         cout<<"No se encontro el dni 461325"<<endl;
+    }
+    //Busca e inserta ordenado
+    persona.dni=3333;
+    strcpy(persona.nombre,"Marcos");
+    enc=false;
+    pos=buscaEInsertaOrdenado(personas,lenP,persona,enc,cmpPersonaPersona);
+    if(!enc){
+        cout<<"Marcos (3333) se agrego en la posicion: "<<pos<<endl;
+    }
+    else{
+        cout<<"Marcos (3333) estaba en la posicion: "<<pos<<endl;
+    }
+    //Busca y agrega desordenado
+    persona.dni=5678;
+    strcpy(persona.nombre,"Jose");
+    agregar<Persona>(personas,lenP,persona);
+    enc=false;
+    pos=buscaYAgrega(personas,lenP,persona,enc,cmpPersonaPersona);
+    if(!enc){
+        cout<<"Jose (5678) se agrego en la posicion: "<<pos<<endl;
+    }
+    else{
+        cout<<"Jose (5678) estaba en la posicion: "<<pos<<endl;
+    }
+    //muestro valores del vector
+    for(int i = 0; i<lenP;i++){
+        cout<<"Nombre: "<<personas[i].nombre<<endl;
+        cout<<"DNI:"<<personas[i].dni<<endl;
     }
     return 0;
 }

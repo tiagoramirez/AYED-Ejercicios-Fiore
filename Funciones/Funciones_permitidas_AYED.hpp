@@ -106,7 +106,7 @@ int busquedaBinaria(T a[], int len, K v, int (*cmpTK)(T, K), bool& enc){
     return ret;
 }
 
-template <typename T,typename K>
+template <typename T>
 int buscaEInsertaOrdenado(T arr[],int& len,T v,bool& enc,int (*cmpTT)(T,T)){
     int pos=busquedaBinaria(arr,len,v,cmpTT,enc);
     if(pos==-1){
@@ -116,7 +116,7 @@ int buscaEInsertaOrdenado(T arr[],int& len,T v,bool& enc,int (*cmpTT)(T,T)){
 }
 
 //agrega al final. No esta en la guia, lo hizo el profesor.
-template <typename T,typename K>
+template <typename T>
 int buscaYAgrega(T arr[],int& len,T v,bool& enc,int (*cmpTT)(T,T)){
     int pos=buscar(arr,len,v,cmpTT);
     if(pos==-1){
