@@ -9,6 +9,12 @@ struct Alumno{
     char codigoMateria[6];
 };
 
+struct MateriaEInscriptos{
+    char codigoMateria[6];
+    int cantInscriptos;
+};
+
+
 void inicializarVector (int& len){
     len=0;
 }
@@ -144,5 +150,11 @@ bool esAlumnoValido(Alumno x){
     }
     else{
         return true;
+    }
+}
+
+void mostrarArrayMateriaEInscriptos(MateriaEInscriptos x[],int len){
+    for(int i=0;i<len;i++){
+        cout<<"Materia "<<x[i].codigoMateria<<" tiene "<<x[i].cantInscriptos<<" inscriptos."<<endl;
     }
 }

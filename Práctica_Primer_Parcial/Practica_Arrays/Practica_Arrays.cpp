@@ -115,7 +115,62 @@ int main(){
             break;
 
             case 4:{
-                
+                Alumno alumnos[10000];
+                int lenAlumnos=0;
+
+                inicializarVector(lenAlumnos);
+
+                FILE* f=fopen("Alumnos.dat","rb+");
+
+                Alumno x;
+
+                fread(&x,sizeof(Alumno),1,f);
+
+                while(!feof(f)){
+                    insertarOrdenado(alumnos,lenAlumnos,x,cmpAlAlCODMAT);
+                    fread(&x,sizeof(Alumno),1,f);
+                }
+
+                fclose(f);
+
+                string codigoMateria[200];
+                int cantInscriptos[200];
+                int posCodigoMateria=-1;
+                string anterior=alumnos[0].codigoMateria;
+                for(int i=0;i<lenAlumnos;i++){
+                    if(i==0 or anterior!=alumnos[i].codigoMateria){
+                        posCodigoMateria++;
+                        cantInscriptos[posCodigoMateria]=1;
+                        codigoMateria[posCodigoMateria]=alumnos[i].codigoMateria;
+                        anterior=alumnos[i].codigoMateria;
+                    }
+                    else{
+                        cantInscriptos[posCodigoMateria]++;
+                    }
+                }
+
+                int cantMaterias=posCodigoMateria+1;
+                int cantMaterias1=cantMaterias;
+                int cantMaterias2=cantMaterias;
+
+                MateriaEInscriptos materias[cantMaterias];
+                for (int i=0;i<cantMaterias;i++){
+                    int posMax=0;
+                    int max=cantInscriptos[0];
+                    for(int j=0;j<cantMaterias1;j++){
+                        if(cantInscriptos[j]>max){
+                            max=cantInscriptos[j];
+                            posMax=j;
+                        }
+                    }
+                    materias[i].cantInscriptos=max;
+                    strcpy(materias[i].codigoMateria,codigoMateria[posMax].c_str());
+                    eliminar(cantInscriptos,cantMaterias1,posMax);
+                    eliminar(codigoMateria,cantMaterias2,posMax);
+                }
+                mostrarArrayMateriaEInscriptos(materias,cantMaterias);
+                system("pause");
+                system("cls");
             }
             break;
 
