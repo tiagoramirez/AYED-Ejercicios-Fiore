@@ -92,17 +92,26 @@ int cmpAlAlLEG(Alumno x, Alumno y){//Compara alumnos por legajo
 }
 
 int cmpMatMat(Materia x, Materia y){
-    if(x.codigoMateria==y.codigoMateria){
+    string primero="";
+    string segundo="";
+    for(int i=0;x.codigoMateria[i]!='\0';i++){
+        primero+=x.codigoMateria[i];
+    }
+    for(int i=0;y.codigoMateria[i]!='\0';i++){
+        segundo+=y.codigoMateria[i];
+    }
+    if(primero==segundo){
         return 0;
     }
     else{
-        if(x.codigoMateria>y.codigoMateria){
+        if(primero>segundo){
             return 1;
         }
         else{
             return -1;
         }
     }
+    
 }
 
 int cmpAlAlCODMAT(Alumno x, Alumno y){//Compara alumnos por codigo de materia
