@@ -46,10 +46,9 @@ int main(){
             break;
 
             case 2:{
-                Alumno alumnos[10000];
-                int lenAlumnos=0;
-
-                inicializarVector(lenAlumnos);
+                Materia materias[200];
+                int lenMaterias;
+                inicializarVector(lenMaterias);
 
                 FILE* f=fopen("Alumnos.dat","rb+");
 
@@ -58,13 +57,17 @@ int main(){
                 fread(&x,sizeof(Alumno),1,f);
 
                 while(!feof(f)){
-                    insertarOrdenado(alumnos,lenAlumnos,x,cmpAlAlCODMAT);
+                    bool enc;
+                    Materia elem;
+                    strcpy(elem.codigoMateria,x.codigoMateria);
+                    buscaEInsertaOrdenado(materias,lenMaterias,elem,enc,cmpMatMat);
                     fread(&x,sizeof(Alumno),1,f);
                 }
 
                 fclose(f);
 
-                mostrarArrayAlumnos2(alumnos,lenAlumnos);
+                mostrarMaterias(materias,lenMaterias);
+                
                 system("pause");
                 system("cls");
             }

@@ -14,6 +14,9 @@ struct MateriaEInscriptos{
     int cantInscriptos;
 };
 
+struct Materia{
+    char codigoMateria[6];
+};
 
 void inicializarVector (int& len){
     len=0;
@@ -88,6 +91,20 @@ int cmpAlAlLEG(Alumno x, Alumno y){//Compara alumnos por legajo
     }
 }
 
+int cmpMatMat(Materia x, Materia y){
+    if(x.codigoMateria==y.codigoMateria){
+        return 0;
+    }
+    else{
+        if(x.codigoMateria>y.codigoMateria){
+            return 1;
+        }
+        else{
+            return -1;
+        }
+    }
+}
+
 int cmpAlAlCODMAT(Alumno x, Alumno y){//Compara alumnos por codigo de materia
     string primero="";
     string segundo="";
@@ -119,11 +136,9 @@ void mostrarArrayAlumnos(Alumno alumnos[],int len){
     }
 }
 
-void mostrarArrayAlumnos2(Alumno alumnos[],int len){
+void mostrarMaterias(Materia x[],int len){
     for(int i=0;i<len;i++){
-        cout<<"Codigo de materia: "<<alumnos[i].codigoMateria<<"   ";
-        cout<<"Legajo: "<<alumnos[i].legajo<<"   ";
-        cout<<"Nombre y Apellido: "<<alumnos[i].nombreYApellido<<endl;
+        cout<<x[i].codigoMateria<<endl;
     }
 }
 
