@@ -23,6 +23,12 @@ struct DatosMaterias{
     char nombreMateria[51];
 };
 
+struct MateriaCompleta{
+    char codigoMateria[6];
+    char nombreMateria[51];
+    int cantInscriptos=1;
+};
+
 void inicializarVector (int& len){
     len=0;
 }
@@ -38,6 +44,20 @@ int insertarOrdenado(T arr[], int& len, T v, int (*cmpTT)(T,T)){
     arr[i]=v;
     len++;
     return i;
+}
+
+//retorna la posicion, o -1 si no lo tiene
+template <typename T, typename K> 
+int buscar(T arr[], int len, K v, int (*cmpTK)(T,K)){
+    int pos=-1;
+    int i=0;
+    while(pos==-1 and i<len){
+        if(cmpTK(arr[i],v)==0){//veo si son iguales los valores
+            pos=i;
+        }
+        i++;
+    }
+    return pos;
 }
 
 template<typename T, typename K>
@@ -71,6 +91,12 @@ int buscaEInsertaOrdenado(T arr[],int& len,T v,bool& enc,int (*cmpTT)(T,T)){
         pos=insertarOrdenado(arr,len,v,cmpTT);
     }
     return pos;
+}
+
+template <typename T>
+void agregar(T arr[], int& len, T v){
+    arr[len]=v;
+    len++;
 }
 
 template <typename T>
@@ -143,7 +169,65 @@ int cmpMatInscMatInsc2(MateriaEInscriptos x, MateriaEInscriptos y){
     }
 }
 
+int cmpMatCompMatComp2(MateriaCompleta x, MateriaCompleta y){
+    if(x.cantInscriptos==y.cantInscriptos){
+        return 0;
+    }
+    else{
+        if(x.cantInscriptos>y.cantInscriptos){
+            return -1;
+        }
+        else{
+            return 1;
+        }
+    }
+}
+
 int cmpMatInscMatInsc(MateriaEInscriptos x, MateriaEInscriptos y){
+    string primero="";
+    string segundo="";
+    for(int i=0;x.codigoMateria[i]!='\0';i++){
+        primero+=x.codigoMateria[i];
+    }
+    for(int i=0;y.codigoMateria[i]!='\0';i++){
+        segundo+=y.codigoMateria[i];
+    }
+    if(primero==segundo){
+        return 0;
+    }
+    else{
+        if(primero>segundo){
+            return 1;
+        }
+        else{
+            return -1;
+        }
+    }
+}
+
+int cmpMatCompMatComp(MateriaCompleta x, MateriaCompleta y){
+    string primero="";
+    string segundo="";
+    for(int i=0;x.codigoMateria[i]!='\0';i++){
+        primero+=x.codigoMateria[i];
+    }
+    for(int i=0;y.codigoMateria[i]!='\0';i++){
+        segundo+=y.codigoMateria[i];
+    }
+    if(primero==segundo){
+        return 0;
+    }
+    else{
+        if(primero>segundo){
+            return 1;
+        }
+        else{
+            return -1;
+        }
+    }
+}
+
+int cmpMateriaCompDato(MateriaCompleta x,DatosMaterias y){
     string primero="";
     string segundo="";
     for(int i=0;x.codigoMateria[i]!='\0';i++){
@@ -204,7 +288,7 @@ void ingresarAlumno(Alumno &x){
 void ingresarMateria(DatosMaterias &x){
     cout<<"Ingresa codigo de materia: ";
     cin>>x.codigoMateria;
-    if(x.codigoMateria[0]!='\0'){
+    if(x.codigoMateria[0]!='X'){
         cout<<"Ingresa el nombre de la materia: ";
         cin>>x.nombreMateria;
     }
@@ -220,10 +304,17 @@ bool esAlumnoValido(Alumno x){
 }
 
 bool esMateriaValida(DatosMaterias x){
-    if(x.codigoMateria[0]=='\0'){
+    if(x.codigoMateria[0]=='X'){
         return false;
     }
     else{
         return true;
+    }
+}
+
+void copiarCharArr(char x[],char y[]){
+    int i;
+    for(i=0;x[i]!='\0';i++){
+        y[i]=x[i];
     }
 }

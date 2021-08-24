@@ -152,7 +152,63 @@ int main(){
             break;
 
             case 5:{
+                MateriaCompleta materias[200];
+                int lenMaterias=0;
 
+                inicializarVector(lenMaterias);
+
+                FILE* f=fopen("Alumnos.dat","rb+");
+
+                Alumno alumno;
+
+                fread(&alumno,sizeof(Alumno),1,f);
+                MateriaCompleta elem;
+
+                while(!feof(f)){
+                    strcpy(elem.codigoMateria,alumno.codigoMateria);
+
+                    bool enc=false;
+                    int pos;
+                    pos=buscaEInsertaOrdenado(materias,lenMaterias,elem,enc,cmpMatCompMatComp);
+                    if(enc==true){
+                        materias[pos].cantInscriptos++;
+                    }
+                    fread(&alumno,sizeof(Alumno),1,f);
+                }
+
+                fclose(f);
+
+                DatosMaterias dato;
+
+                FILE* archivo=fopen("Materias.dat","rb+");
+                fread(&dato,sizeof(DatosMaterias),1,archivo);
+                while (!feof(archivo)){
+                    bool enc;
+                    int pos=busquedaBinaria(materias,lenMaterias,dato,cmpMateriaCompDato,enc);
+                    if(pos!=-1){
+                        copiarCharArr(dato.nombreMateria,materias[pos].nombreMateria);//anda mal
+                    }
+                    else{
+                        MateriaCompleta elem;
+                        elem.cantInscriptos=0;
+                        copiarCharArr(dato.codigoMateria,elem.codigoMateria);
+                        copiarCharArr(dato.nombreMateria,elem.nombreMateria);
+                        insertarOrdenado(materias,lenMaterias,elem,cmpMatCompMatComp);
+                    }
+                    fread(&dato,sizeof(DatosMaterias),1,archivo);
+                }
+
+                fclose(archivo);
+
+                ordenar(materias,lenMaterias,cmpMatCompMatComp2);
+
+                cout<<"Cod Materia | Nombre Materia | Cant de inscriptos"<<endl;
+                for(int i=0;i<lenMaterias;i++){
+                    cout<<materias[i].codigoMateria<<" | "<<materias[i].nombreMateria<<" | "<<materias[i].cantInscriptos<<endl;
+                }
+                
+                system("pause");
+                system("cls");
             }
             break;
 
@@ -192,10 +248,10 @@ int main(){
             case 9:{
                 FILE* archivo=fopen("Materias.dat","wb+");
                 DatosMaterias materia;
-                cout<<"Termina el ingreso si pone un codigo vacio"<<endl;
+                cout<<"Termina el ingreso si pone un caracter X"<<endl;
                 ingresarMateria(materia);
 
-                while(esMateriaValida){
+                while(materia.codigoMateria[0]!='X'){
                     fwrite(&materia,sizeof(DatosMaterias),1,archivo);
                     ingresarMateria(materia);
                 }
