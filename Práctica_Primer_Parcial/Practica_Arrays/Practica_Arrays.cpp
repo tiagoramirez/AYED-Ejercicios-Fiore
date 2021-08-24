@@ -12,8 +12,10 @@ int main(){
         cout<<"4: Punto D"<<endl;
         cout<<"5: Punto E"<<endl;
         cout<<"6: Punto F"<<endl;
-        cout<<"8: Crear archivo Alumnos.dat"<<endl;
-        cout<<"9: Ver archivo Alumnos.dat"<<endl;
+        cout<<"7: Crear archivo Alumnos.dat"<<endl;
+        cout<<"8: Ver archivo Alumnos.dat"<<endl;
+        cout<<"9: Crear archivo Materias.dat"<<endl;
+        cout<<"10: Ver archivo Materias.dat"<<endl;
         cout<<"0: Terminar el programa"<<endl;
         cout<<"Ingresa la opcion: ";
         cin>>opc;
@@ -74,42 +76,35 @@ int main(){
             break;
 
             case 3:{
-                Alumno alumnos[10000];
-                int lenAlumnos=0;
+                MateriaEInscriptos materias[200];
+                int lenMaterias=0;
 
-                inicializarVector(lenAlumnos);
+                inicializarVector(lenMaterias);
 
                 FILE* f=fopen("Alumnos.dat","rb+");
 
-                Alumno x;
+                Alumno alumno;
 
-                fread(&x,sizeof(Alumno),1,f);
+                fread(&alumno,sizeof(Alumno),1,f);
+                MateriaEInscriptos elem;
 
                 while(!feof(f)){
-                    insertarOrdenado(alumnos,lenAlumnos,x,cmpAlAlCODMAT);
-                    fread(&x,sizeof(Alumno),1,f);
+                    strcpy(elem.codigoMateria,alumno.codigoMateria);
+
+                    bool enc=false;
+                    int pos;
+                    pos=buscaEInsertaOrdenado(materias,lenMaterias,elem,enc,cmpMatInscMatInsc);
+                    if(enc==true){
+                        materias[pos].cantInscriptos++;
+                    }
+                    fread(&alumno,sizeof(Alumno),1,f);
                 }
 
                 fclose(f);
 
-                string codigoMateria[200];
-                int cantInscriptos[200];
-                int posCodigoMateria=-1;
-                string anterior=alumnos[0].codigoMateria;
-                for(int i=0;i<lenAlumnos;i++){
-                    if(i==0 or anterior!=alumnos[i].codigoMateria){
-                        posCodigoMateria++;
-                        cantInscriptos[posCodigoMateria]=1;
-                        codigoMateria[posCodigoMateria]=alumnos[i].codigoMateria;
-                        anterior=alumnos[i].codigoMateria;
-                    }
-                    else{
-                        cantInscriptos[posCodigoMateria]++;
-                    }
-                }
-                for(int i=0;i<posCodigoMateria+1;i++){
-                    cout<<"Materia: "<<codigoMateria[i]<<endl;
-                    cout<<"Cantidad de inscripciones: "<<cantInscriptos[i]<<endl;
+                cout<<"Cod Materia | Cant de inscriptos"<<endl;
+                for(int i=0;i<lenMaterias;i++){
+                    cout<<materias[i].codigoMateria<<"       | "<<materias[i].cantInscriptos<<endl;
                 }
 
                 system("pause");
@@ -118,66 +113,50 @@ int main(){
             break;
 
             case 4:{
-                Alumno alumnos[10000];
-                int lenAlumnos=0;
+                MateriaEInscriptos materias[200];
+                int lenMaterias=0;
 
-                inicializarVector(lenAlumnos);
+                inicializarVector(lenMaterias);
 
                 FILE* f=fopen("Alumnos.dat","rb+");
 
-                Alumno x;
+                Alumno alumno;
 
-                fread(&x,sizeof(Alumno),1,f);
+                fread(&alumno,sizeof(Alumno),1,f);
+                MateriaEInscriptos elem;
 
                 while(!feof(f)){
-                    insertarOrdenado(alumnos,lenAlumnos,x,cmpAlAlCODMAT);
-                    fread(&x,sizeof(Alumno),1,f);
+                    strcpy(elem.codigoMateria,alumno.codigoMateria);
+
+                    bool enc=false;
+                    int pos;
+                    pos=buscaEInsertaOrdenado(materias,lenMaterias,elem,enc,cmpMatInscMatInsc);
+                    if(enc==true){
+                        materias[pos].cantInscriptos++;
+                    }
+                    fread(&alumno,sizeof(Alumno),1,f);
                 }
 
                 fclose(f);
 
-                string codigoMateria[200];
-                int cantInscriptos[200];
-                int posCodigoMateria=-1;
-                string anterior=alumnos[0].codigoMateria;
-                for(int i=0;i<lenAlumnos;i++){
-                    if(i==0 or anterior!=alumnos[i].codigoMateria){
-                        posCodigoMateria++;
-                        cantInscriptos[posCodigoMateria]=1;
-                        codigoMateria[posCodigoMateria]=alumnos[i].codigoMateria;
-                        anterior=alumnos[i].codigoMateria;
-                    }
-                    else{
-                        cantInscriptos[posCodigoMateria]++;
-                    }
+                ordenar(materias,lenMaterias,cmpMatInscMatInsc2);
+
+                cout<<"Cod Materia | Cant de inscriptos"<<endl;
+                for(int i=0;i<lenMaterias;i++){
+                    cout<<materias[i].codigoMateria<<"       | "<<materias[i].cantInscriptos<<endl;
                 }
 
-                int cantMaterias=posCodigoMateria+1;
-                int cantMaterias1=cantMaterias;
-                int cantMaterias2=cantMaterias;
-
-                MateriaEInscriptos materias[cantMaterias];
-                for (int i=0;i<cantMaterias;i++){
-                    int posMax=0;
-                    int max=cantInscriptos[0];
-                    for(int j=0;j<cantMaterias1;j++){
-                        if(cantInscriptos[j]>max){
-                            max=cantInscriptos[j];
-                            posMax=j;
-                        }
-                    }
-                    materias[i].cantInscriptos=max;
-                    strcpy(materias[i].codigoMateria,codigoMateria[posMax].c_str());
-                    eliminar(cantInscriptos,cantMaterias1,posMax);
-                    eliminar(codigoMateria,cantMaterias2,posMax);
-                }
-                mostrarArrayMateriaEInscriptos(materias,cantMaterias);
                 system("pause");
                 system("cls");
             }
             break;
 
-            case 8:{
+            case 5:{
+
+            }
+            break;
+
+            case 7:{
                 FILE* f=fopen("Alumnos.dat","wb+");
                 Alumno alumno;
                 cout<<"Termina el ingreso con un legajo 0"<<endl;
@@ -196,7 +175,7 @@ int main(){
             }
             break;
 
-            case 9:{
+            case 8:{
                 FILE* f=fopen("Alumnos.dat","rb+");
                 Alumno alumno;
                 fread(&alumno,sizeof(Alumno),1,f);
@@ -205,6 +184,39 @@ int main(){
                     fread(&alumno,sizeof(Alumno),1,f);
                 }
                 fclose(f);
+                system("pause");
+                system("cls");
+            }
+            break;
+
+            case 9:{
+                FILE* archivo=fopen("Materias.dat","wb+");
+                DatosMaterias materia;
+                cout<<"Termina el ingreso si pone un codigo vacio"<<endl;
+                ingresarMateria(materia);
+
+                while(esMateriaValida){
+                    fwrite(&materia,sizeof(DatosMaterias),1,archivo);
+                    ingresarMateria(materia);
+                }
+                fclose(archivo);
+
+                cout<<"Se termino de ingresar datos"<<endl;
+
+                system("pause");
+                system("cls");
+            }
+            break;
+
+            case 10:{
+                FILE* archivo=fopen("Materias.dat","rb+");
+                DatosMaterias materia;
+                fread(&materia,sizeof(DatosMaterias),1,archivo);
+                while(!feof(archivo)){
+                    mostrarDatosMaterias(materia);
+                    fread(&materia,sizeof(DatosMaterias),1,archivo);
+                }
+                fclose(archivo);
                 system("pause");
                 system("cls");
             }

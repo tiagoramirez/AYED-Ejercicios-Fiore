@@ -11,24 +11,20 @@ struct Alumno{
 
 struct MateriaEInscriptos{
     char codigoMateria[6];
-    int cantInscriptos;
+    int cantInscriptos=1;
 };
 
 struct Materia{
     char codigoMateria[6];
 };
 
+struct DatosMaterias{
+    char codigoMateria[6];
+    char nombreMateria[51];
+};
+
 void inicializarVector (int& len){
     len=0;
-}
-
-//Elimina el valor ubicado en la posición pos del array arr, decrementando su longitud len.
-template <typename T>
-void eliminar(T arr[], int& len, int pos){
-    for (int i=pos; i<len-1;i++){//Le puse len-1 porque termina 1 posicion antes
-        arr[i]=arr[i+1];
-    }
-    len--;
 }
 
 //Inserta v en un array que esta previamente ordenado y retorna la posicion donde se agrega
@@ -77,6 +73,25 @@ int buscaEInsertaOrdenado(T arr[],int& len,T v,bool& enc,int (*cmpTT)(T,T)){
     return pos;
 }
 
+template <typename T>
+void ordenar(T arr[], int len, int (*cmpTT)(T,T)){//ordenar optimizado
+    T aux;
+    bool hayCambio=true;
+    int i=0;
+    while(hayCambio and i<len-1){
+        hayCambio=false;
+        for(int x=0;x<len-1-i;x++){
+            if(cmpTT(arr[x],arr[x+1])==1){//veo si el primero es mas grande que el segundo
+                aux=arr[x];
+                arr[x]=arr[x+1];
+                arr[x+1]=aux;
+                hayCambio=true;
+            }
+        }
+        i++;
+    }
+}
+
 int cmpAlAlLEG(Alumno x, Alumno y){//Compara alumnos por legajo
     if(x.legajo==y.legajo){
         return 0;
@@ -114,7 +129,21 @@ int cmpMatMat(Materia x, Materia y){
     
 }
 
-int cmpAlAlCODMAT(Alumno x, Alumno y){//Compara alumnos por codigo de materia
+int cmpMatInscMatInsc2(MateriaEInscriptos x, MateriaEInscriptos y){
+    if(x.cantInscriptos==y.cantInscriptos){
+        return 0;
+    }
+    else{
+        if(x.cantInscriptos>y.cantInscriptos){
+            return -1;
+        }
+        else{
+            return 1;
+        }
+    }
+}
+
+int cmpMatInscMatInsc(MateriaEInscriptos x, MateriaEInscriptos y){
     string primero="";
     string segundo="";
     for(int i=0;x.codigoMateria[i]!='\0';i++){
@@ -134,7 +163,6 @@ int cmpAlAlCODMAT(Alumno x, Alumno y){//Compara alumnos por codigo de materia
             return -1;
         }
     }
-    
 }
 
 void mostrarArrayAlumnos(Alumno alumnos[],int len){
@@ -157,6 +185,11 @@ void mostrarAlumno(Alumno x){
     cout<<"Codigo de materia: "<<x.codigoMateria<<endl;    
 }
 
+void mostrarDatosMaterias(DatosMaterias x){
+    cout<<"Codigo de materia: "<<x.codigoMateria<<"   ";
+    cout<<"Nombre de materia: "<<x.nombreMateria<<endl;
+}
+
 void ingresarAlumno(Alumno &x){
     cout<<"Ingresa legajo: ";
     cin>>x.legajo;
@@ -165,6 +198,15 @@ void ingresarAlumno(Alumno &x){
         cin>>x.nombreYApellido;
         cout<<"Ingresa codigo de materia: ";
         cin>>x.codigoMateria;
+    }
+}
+
+void ingresarMateria(DatosMaterias &x){
+    cout<<"Ingresa codigo de materia: ";
+    cin>>x.codigoMateria;
+    if(x.codigoMateria[0]!='\0'){
+        cout<<"Ingresa el nombre de la materia: ";
+        cin>>x.nombreMateria;
     }
 }
 
@@ -177,8 +219,11 @@ bool esAlumnoValido(Alumno x){
     }
 }
 
-void mostrarArrayMateriaEInscriptos(MateriaEInscriptos x[],int len){
-    for(int i=0;i<len;i++){
-        cout<<"Materia "<<x[i].codigoMateria<<" tiene "<<x[i].cantInscriptos<<" inscriptos."<<endl;
+bool esMateriaValida(DatosMaterias x){
+    if(x.codigoMateria[0]=='\0'){
+        return false;
+    }
+    else{
+        return true;
     }
 }
