@@ -84,7 +84,7 @@ void ordenar(ElectroAgg electrodomesticos[], int len){
     while(hayCambio and i<len-1){
         hayCambio=false;
         for(int x=0;x<len-1-i;x++){
-            if(electrodomesticos[x].codE>electrodomesticos[x+1].codE){
+            if(electrodomesticos[x].codE<electrodomesticos[x+1].codE){
                 aux=electrodomesticos[x];
                 electrodomesticos[x]=electrodomesticos[x+1];
                 electrodomesticos[x+1]=aux;
