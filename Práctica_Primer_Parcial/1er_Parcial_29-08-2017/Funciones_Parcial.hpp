@@ -69,7 +69,7 @@ int cmpElectroCodigo(Electro electrodomestico, int codigoElectrodomestico){
 
 float obtenerPrecioElectro(Electro electrodomesticos[],int codElectro){
     bool enc;
-    int pos=busquedaBinaria<Electro,int>(electrodomesticos,500,codElectro,cmpElectroCodigo,enc);
+    int pos=busquedaBinaria<Electro,int>(electrodomesticos,4,codElectro,cmpElectroCodigo,enc);//500 en vez de 4 (puse 4 para el ejemplo del vector)
     return electrodomesticos[pos].precio;
 }
 
@@ -98,6 +98,18 @@ void ordenar(ElectroAgg electrodomesticos[], int len){
 // Fin Punto 3
 
 // Inicio Punto 4
+
+template <typename T>
+int insertarOrdenado(T arr[], int& len, T v, int (*cmpTT)(T,T)){
+    int i=len;
+    while(i>0 and cmpTT(v,arr[i-1])==-1){
+        arr[i]=arr[i-1];
+        i--;
+    }
+    arr[i]=v;
+    len++;
+    return i;
+}
 
 template <typename T>
 int buscaEInsertaOrdenado(T arr[],int& len,T v,bool& enc,int (*cmpTT)(T,T)){
