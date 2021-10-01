@@ -37,3 +37,31 @@ long fileSize(FILE* f){
     seek<T>(f,aux+1);
     return res;
 }
+
+template <typename T, typename K>
+int busquedaBinaria(FILE* f, K v, int (*cmpTK)(T,K)){
+    int aux=filePos<T>(f);
+    fseek(f,0,SEEK_SET);
+    int ret=-1;
+    bool enc=false;
+    int ini=0;
+    int fin=fileSize<T>(f);
+    while(!enc and ini<=fin){
+        int medio=(ini+fin)/2;
+        seek<T>(f,medio);
+        T valorFile=read<T>(f);
+        if(cmpTK(valorFile,v)==0){
+            ret=medio;
+            enc=true;
+        }else{
+            if(cmpTK(valorFile,v)==1){
+                fin=medio-1;
+            }
+            else{
+                ini=medio+1;
+            }
+        }
+    }
+    seek<T>(f,aux+1);
+    return ret;
+}

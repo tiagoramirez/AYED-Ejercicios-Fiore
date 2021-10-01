@@ -6,52 +6,66 @@ struct Persona{
     int edad;
 };
 
+int cmpDniPersona(Persona p, int dni){
+    if(dni==p.dni){
+        return 0;
+    }
+    else{
+        if(dni>p.dni){
+            return 1;
+        }
+        else{
+            return -1;
+        }
+    }
+}
+
 int main(){
-    int x;
-    cout<<"Ingresa un valor: ";
-    cin>>x;
+    // int x;
+    // cout<<"Ingresa un valor: ";
+    // cin>>x;
 
-    FILE* archivoNuevoInt=fopen("Numeros.dat","wb+");
+    // FILE* archivoNuevoInt=fopen("Numeros.dat","wb+");
 
-    while(x!=0){
-        write(archivoNuevoInt,x);
-        cout<<"Ingresa otro valor: ";
-        cin>>x;
-    }
+    // while(x!=0){
+    //     write(archivoNuevoInt,x);
+    //     cout<<"Ingresa otro valor: ";
+    //     cin>>x;
+    // }
 
-    fclose(archivoNuevoInt);
+    // fclose(archivoNuevoInt);
 
-    FILE* archivoVerInt=fopen("Numeros.dat","rb+");
+    // FILE* archivoVerInt=fopen("Numeros.dat","rb+");
 
-    cout<<"Ingresaste: "<<endl;
-    int res;
-    res=read<int>(archivoVerInt);
+    // cout<<"Ingresaste: "<<endl;
+    // int res;
+    // res=read<int>(archivoVerInt);
 
-    while(!feof(archivoVerInt)){
-        cout<<res<<" esta en la posicion del archivo: " <<filePos<int>(archivoVerInt)<<endl;
-        cout<<"El archivo tiene "<<fileSize<int>(archivoVerInt)<<" registros"<<endl;//esto es para probar que no modifica la posicion actual del archivo
-        res=read<int>(archivoVerInt);
-    }
+    // while(!feof(archivoVerInt)){
+    //     cout<<res<<" esta en la posicion del archivo: " <<filePos<int>(archivoVerInt)<<endl;
+    //     cout<<"El archivo tiene "<<fileSize<int>(archivoVerInt)<<" registros"<<endl;//esto es para probar que no modifica la posicion actual del archivo
+    //     res=read<int>(archivoVerInt);
+    // }
 
-    fclose(archivoVerInt);
+    // fclose(archivoVerInt);
 
-    Persona p;
+    // Persona p;
 
-    FILE* archivoNuevoPersona=fopen("Personas.dat","wb+");
-    cout<<"Ingresa dni: ";
-    cin>>p.dni;
+    // FILE* archivoNuevoPersona=fopen("Personas.dat","wb+");
+    // cout<<"Ingresa dni: ";
+    // cin>>p.dni;
 
-    while(p.dni!=0){
-        cout<<"Ingresa nombre: ";
-        cin>>p.nombre;
-        cout<<"Ingresa edad: ";
-        cin>>p.edad;
-        write<Persona>(archivoNuevoPersona,p);
-        cout<<"Ingresa otro dni: ";
-        cin>>p.dni;
-    }
+    // while(p.dni!=0){
+    //     cout<<"Ingresa nombre: ";
+    //     cin>>p.nombre;
+    //     cout<<"Ingresa edad: ";
+    //     cin>>p.edad;
+    //     write<Persona>(archivoNuevoPersona,p);
+    //     cout<<"Ingresa otro dni: ";
+    //     cin>>p.dni;
+    // }
     
-    fclose(archivoNuevoPersona);
+    // fclose(archivoNuevoPersona);
 
     FILE* archivoVerPersona=fopen("Personas.dat","rb+");
 
@@ -68,6 +82,8 @@ int main(){
     seek<Persona>(archivoVerPersona,3);
     persona=read<Persona>(archivoVerPersona);
     cout<<persona.dni<<" - "<<persona.nombre<<" - "<<persona.edad<<endl;
+
+    cout<<"El dni 123 esta en la posicion: "<<busquedaBinaria<Persona,int>(archivoVerPersona,123,cmpDniPersona)<<endl;
 
     fclose(archivoVerPersona);
 
