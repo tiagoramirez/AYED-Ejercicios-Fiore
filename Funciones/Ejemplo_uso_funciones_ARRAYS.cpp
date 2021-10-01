@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string.h>
-#include "Funciones_permitidas_AYED.hpp"
+#include "Funciones_permitidas_ARRAYS.hpp"
 using namespace std;
 
 struct Persona{
