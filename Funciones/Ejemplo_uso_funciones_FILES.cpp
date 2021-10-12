@@ -11,7 +11,7 @@ int cmpDniPersona(Persona p, int dni){
         return 0;
     }
     else{
-        if(dni>p.dni){
+        if(p.dni>dni){
             return 1;
         }
         else{
@@ -74,7 +74,7 @@ int main(){
     persona=read<Persona>(archivoVerPersona);
 
     while(!feof(archivoVerPersona)){
-        cout<<persona.dni<<" - "<<persona.nombre<<" - "<<persona.edad<<" esta en la posicion del archivo: " <<filePos<Persona>(archivoVerPersona)<<endl;
+        cout<<persona.dni<<" - "<<persona.nombre<<" - "<<persona.edad<<" esta en la posicion del archivo: " <<filePos<Persona>(archivoVerPersona)-1<<endl;
         persona=read<Persona>(archivoVerPersona);
     }
 
@@ -83,7 +83,7 @@ int main(){
     persona=read<Persona>(archivoVerPersona);
     cout<<persona.dni<<" - "<<persona.nombre<<" - "<<persona.edad<<endl;
 
-    cout<<"El dni 123 esta en la posicion: "<<busquedaBinaria<Persona,int>(archivoVerPersona,123,cmpDniPersona)<<endl;
+    cout<<"El dni 54345123 esta en la posicion: "<<busquedaBinaria<Persona,int>(archivoVerPersona,54345123,cmpDniPersona)<<endl;
 
     fclose(archivoVerPersona);
 

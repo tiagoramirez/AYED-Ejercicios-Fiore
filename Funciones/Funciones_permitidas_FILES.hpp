@@ -24,7 +24,7 @@ long filePos(FILE* f){
 
 template <typename T>
 void seek(FILE* f, int n){
-    int posicionLogica=n-1;
+    int posicionLogica=n;
     int posicionFisica=posicionLogica*sizeof(T);
     fseek(f,posicionFisica,SEEK_SET);
 }
@@ -34,18 +34,18 @@ long fileSize(FILE* f){
     int aux=filePos<T>(f);
     fseek(f,0,SEEK_END);
     int res=filePos<T>(f);
-    seek<T>(f,aux+1);
+    seek<T>(f,aux);
     return res;
 }
 
 template <typename T, typename K>
 int busquedaBinaria(FILE* f, K v, int (*cmpTK)(T,K)){
     int aux=filePos<T>(f);
-    fseek(f,0,SEEK_SET);
+    seek<T>(f,0);
     int ret=-1;
     bool enc=false;
     int ini=0;
-    int fin=fileSize<T>(f);
+    int fin=fileSize<T>(f)-1;
     while(!enc and ini<=fin){
         int medio=(ini+fin)/2;
         seek<T>(f,medio);
@@ -62,6 +62,6 @@ int busquedaBinaria(FILE* f, K v, int (*cmpTK)(T,K)){
             }
         }
     }
-    seek<T>(f,aux+1);
+    seek<T>(f,aux);
     return ret;
 }
