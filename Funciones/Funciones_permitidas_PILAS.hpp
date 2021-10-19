@@ -4,13 +4,6 @@ using namespace std;
 //Funciones de la pagina 95 del pdf "Material oficial AYED 2014.pdf"
 
 template <typename T>
-void push(Nodo<T>*& p, T v);
-
-template <typename T>
-T pop(Nodo<T>*& p);
-
-
-template <typename T>
 struct NodoPila{
     T info;
     NodoPila<T>* siguiente;
@@ -28,7 +21,7 @@ bool estaVacia(NodoPila<T>* raiz){
 
 template <typename T>
 void push(NodoPila<T>*& raiz, T v){
-    NodoPila<T>* puntero=new NodoPila();
+    NodoPila<T>* puntero=new NodoPila<T>();
     puntero->info=v;
     puntero->siguiente=raiz;
     raiz=puntero;
@@ -42,4 +35,3 @@ T pop(NodoPila<T>*& raiz){
     delete puntero;
     return info;
 }
-
