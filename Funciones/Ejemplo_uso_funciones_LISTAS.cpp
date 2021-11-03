@@ -13,11 +13,33 @@ struct Materia{
     char nombreMateria[50+1];
 };
 
+struct NodoListaMateriaInscripto{
+    char nombreMateria[6];
+    NodoListaMateriaInscripto* siguiente;
+};
+
 struct AlumnoMat{
     char nombre[51];
     int legajo;
     int cantidadMaterias;
+    NodoListaMateriaInscripto* raizListaMateriasInscripto;
 };
+
+void push(NodoListaMateriaInscripto*& raiz, char v[]){
+    NodoListaMateriaInscripto* puntero=new NodoListaMateriaInscripto();
+    strcpy(v,puntero->nombreMateria);
+    puntero->siguiente=raiz;
+    raiz=puntero;
+}
+
+string pop(NodoListaMateriaInscripto*& raiz){
+    NodoListaMateriaInscripto* puntero=raiz;
+    char ret[6];
+    strcpy(puntero->nombreMateria,ret);
+    raiz=puntero->siguiente;
+    delete puntero;
+    return ret;
+}
 
 int cmpAlAl(AlumnoMat x,AlumnoMat y){
     if(x.legajo==y.legajo){
@@ -73,6 +95,7 @@ int main(){
         alumnoASubir.legajo=alumno.legajo;
         strcpy(alumno.nombre,alumnoASubir.nombre);
         alumnoASubir.cantidadMaterias=0;
+        alumnoASubir.raizListaMateriasInscripto=NULL;
 
         insertarOrdenado<AlumnoMat>(raiz,alumnoASubir,cmpAlAl);
         fread(&alumno,sizeof(Alumno),1,archivoAlumnos);
@@ -87,6 +110,7 @@ int main(){
     while(!feof){
         NodoLista<AlumnoMat>* puntero=buscar<AlumnoMat,int>(raiz,materia.legajo,cmpAlLeg);
         puntero->info.cantidadMaterias++;
+        push(puntero->info.raizListaMateriasInscripto,materia.nombreMateria);
 
         fread(&materia,sizeof(Materia),1,archivoMaterias);
     }
@@ -98,6 +122,12 @@ int main(){
     cout<<"Legajo | Nombre | Cantidad"<<endl;
     while(punteroAux!=NULL){
         cout<<punteroAux->info.legajo<<"|"<<punteroAux->info.nombre<<"|"<<punteroAux->info.cantidadMaterias<<endl;
+        NodoListaMateriaInscripto* punteroAuxMaterias=punteroAux->info.raizListaMateriasInscripto;
+        cout<<"Materias: "<<endl;
+        while(punteroAuxMaterias!=NULL){
+            string nombreMateria=pop(punteroAuxMaterias);
+            cout<<nombreMateria<<endl;
+        }
         punteroAux=punteroAux->siguiente;
     }
 
